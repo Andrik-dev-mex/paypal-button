@@ -1,24 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from "react";
+import PaypalCheckoutButton from "./components/PaypalCheckoutButton";
+import "./App.css"
+import Navbar from "./layout/Navbar";
+
 
 function App() {
+  const order = {
+    order: {
+      customer: "112122",
+      total: '3908.97',
+      items: [
+        {
+          sku: "12343",
+          name: "Bocina Tronsmart T6",
+          price: '1139.99',
+          quantity: 1,
+          currency: 'MXN'
+        },
+        {
+          sku: "1221w3",
+          name: "Xiaomi Mi Band 4",
+          price: '929.99',
+          quantity: 2,
+          currency: 'MXN'
+        },
+        {
+          sku: "1253qw",
+          name: "Mouse Logitech G502 Hero",
+          price: '909.00',
+          quantity: 1,
+          currency: 'MXN',
+        },
+      ]
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Navbar />
+      <div className="container-flex" >
+        <PaypalCheckoutButton
+          order={order.order}
+        />
+      </div>
+    </Fragment>
   );
 }
 
